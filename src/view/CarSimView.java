@@ -30,7 +30,7 @@ public class CarSimView extends JFrame  {
 	private MainMenu mainMenu;
 	private SimulationPanel simPanel;
 	private ConsolePanel consolePanel;
-	private TabbedView tabbedView;
+	private TrafficLightPanel tlp;
 	
 	public CarSimView(String title, WorldController wControl) {
 		super(title);
@@ -42,7 +42,7 @@ public class CarSimView extends JFrame  {
 		simPanel= new SimulationPanel(this.wControl, this);
 		mainMenu= new MainMenu(this.wControl, this);
 		consolePanel = new ConsolePanel (this.wControl,this);
-		tabbedView = new TabbedView(this.wControl,this, mainContainer);
+		tlp =new TrafficLightPanel();
 		
 		this.setResizable(true);
 		this.setSize(1280, 830);
@@ -60,7 +60,12 @@ public class CarSimView extends JFrame  {
 		//mainContainer.add(tabbedView.tabbedPane, BorderLayout.EAST);
 	}
 	
-
+	public void TrafficPanel(){
+		mainContainer.removeAll();
+		mainContainer.add(tlp);
+		mainContainer.revalidate();
+		mainContainer.repaint();
+	}
 	public void mainMenu() {
 		// TODO Auto-generated method stub
 		//change panel  main menu
